@@ -35,3 +35,11 @@ def delete_completed():
     todos_collection.delete_many({'complete': True})
 
     return redirect(url_for('main.index'))
+
+
+@main.route('/delete_all')
+def delete_all():
+    todos_collection = mongo.db.todos
+    todos_collection.delete_many({})
+
+    return redirect(url_for('main.index'))
